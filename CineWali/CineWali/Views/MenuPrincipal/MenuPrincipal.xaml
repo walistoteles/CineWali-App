@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CineWali.Views.MenuPrincipal.MenuPrincipal" BackgroundColor="#1B1A28"
+             xmlns:local="clr-namespace:CineWali.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:MenuPrincipalViewModel/>
+    </ContentPage.BindingContext>
+
+
+
+
+    <Grid RowDefinitions="Auto, *" Padding="30" RowSpacing="40">
+        <Label Text="CINEWALI" TextColor="#00B7FC" FontSize="40" FontAttributes="Bold" HorizontalOptions="Center"/>
+        <StackLayout Grid.Row="1" Spacing="15">
+            <Label Text="Lançamentos" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+            <CollectionView SelectionMode="Single" ItemsSource="{Binding filmes}">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="20" HorizontalItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <Label Text="Not Found 404" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="20">
+                            <Image Source="{Binding Capa}" Aspect="AspectFill" HeightRequest="235" HorizontalOptions="FillAndExpand"/>
+                            <Label Text="{Binding Nome}" TextColor="White" FontSize="14" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+
+        </StackLayout>
+
+
+
+    </Grid>
+</ContentPage>
